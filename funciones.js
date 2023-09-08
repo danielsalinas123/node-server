@@ -18,15 +18,9 @@ function eliminarTarea(lista)
 {
     const id=parseInt(readLineSync.question('\n'+"Ingrese el indicador de la tarea que desea eliminar: "));
 
-    let verificacionTareaEnLista=false;
-    lista.filter(item=>{
-        if(item.id==id)
-            verificacionTareaEnLista=true;
-    });
-
-    if(verificacionTareaEnLista)
+    const posicion=lista.findIndex(item=>item.id==id);
+    if(posicion!=-1)
     {
-        const posicion=lista.findIndex(item=>item.id==id);
         lista.splice(posicion,1);
         console.log('\n'+`Se elimino la tarea indicada por el numero ${id}.`);
         imprimirLista(lista);
@@ -42,19 +36,15 @@ function completarTarea(lista)
     let verificacionTareaEnLista=false;
     lista.filter(item=>{
         if(item.id==id)
+        {
             verificacionTareaEnLista=true;
+            console.log('\n'+`Se completo la tarea indicada por el numero ${id}.`);
+            item.estado="completada";
+            imprimirLista(lista);
+        }
     });
 
-    if(verificacionTareaEnLista)
-    {
-        console.log('\n'+`Se completo la tarea indicada por el numero ${id}.`);
-        lista.filter(item=>{
-            if(item.id==id)
-                item.estado="completada";
-        });
-        imprimirLista(lista);
-    }
-    else
+    if(!verificacionTareaEnLista)
         console.log('\n'+`El indicador "${id}" no corresponde a ninguna tarea de la lista.`);
 }
 
