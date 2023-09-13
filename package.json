@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js"
+    "dev": "nodemon servidor.js"
   },
   "keywords": [
     "node"
@@ -13,6 +13,7 @@
   "author": "Daniel Salinas Jaramillo",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^3.0.1",
     "readline-sync": "^1.4.10"
   }
 }
